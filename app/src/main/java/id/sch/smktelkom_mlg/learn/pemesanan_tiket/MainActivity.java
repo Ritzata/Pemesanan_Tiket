@@ -13,7 +13,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
     RadioButton laki, Perempuan;
     TextView tvHasil;
-    EditText etNama,etUsia;
+    EditText etNama;
     Button btpesan;
     CheckBox cebox1,cebox2,cebox3,cebox4;
     Spinner spp;
@@ -24,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         etNama = (EditText) findViewById(R.id.editTextNama);
         btpesan = (Button) findViewById(R.id.button);
-        etUsia.setText("");
         laki = (RadioButton) findViewById(R.id.rbL);
         Perempuan = (RadioButton) findViewById(R.id.rbP);
         cebox1= (CheckBox) findViewById(R.id.cb1);
@@ -37,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
        btpesan.setOnClickListener(new View.OnClickListener() {
                                        @Override
                                        public void onClick(View view) {
-                                           doClick();
+
                                            doProcess();
                                        }
                                    }
@@ -75,36 +74,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void doClick() {
-        String hasil4="JURUSAN : \n";
-        int startln = hasil4.length();
-
-        if(cebox1.isChecked()) hasil4+=cebox1.getText()+"ok";
-        if(cebox2.isChecked()) hasil4+=cebox2.getText()+"ok";
-        if(cebox3.isChecked()) hasil4+=cebox3.getText()+"ok";
-        if(cebox4.isChecked()) hasil4+=cebox4.getText()+"ok";
-
-        if(hasil4.length()==startln) hasil4+="GAGAL (X)";
-
-        {
-            String hasil2 = null;
-            if(laki.isChecked()){
-                hasil2 = laki.getText().toString();
-            }
-            else if(Perempuan.isChecked()){
-                hasil2 = Perempuan.getText().toString();
-            }
-            if (hasil2 == null){
-                tvHasil.setText("Konten belum diisi");
-            }
-            else{
-                tvHasil.setText("Jenis Kelamin : "+hasil2);
-            }
-            tvHasil.setText(hasil4);
-            tvHasil.setText("Kelas :"+spp.getSelectedItem().toString());
-
-        }
-    }
 }
 
 
